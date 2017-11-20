@@ -47,6 +47,12 @@ type ChartProps d =
   , yExtents :: d -> T2 Number Number
   }
 
+chart :: forall d. ChartProps d -> Array ReactElement -> ReactElement
+chart = createElement chartImpl
+
+
+foreign import xAxisImpl :: forall props. ReactClass props
+
 
 newtype XAxisPosition = XAxisPosition String
 
@@ -62,6 +68,11 @@ type XAxisProps =
   , ticks :: Int
   }
 
+xAxis :: XAxisProps -> ReactElement
+xAxis p = createElement xAxisImpl p []
+
+foreign import yAxisImpl :: forall props. ReactClass props
+
 newtype YAxisPosition = YAxisPosition String
 
 left :: YAxisPosition
@@ -76,5 +87,5 @@ type YAxisProps =
   , ticks :: Int
   }
 
-chart :: forall d. ChartProps d -> Array ReactElement -> ReactElement
-chart = createElement chartImpl
+yAxis :: XAxisProps -> ReactElement
+yAxis p = createElement yAxisImpl p []
