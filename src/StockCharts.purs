@@ -87,5 +87,5 @@ type YAxisProps =
   , ticks :: Int
   }
 
-yAxis :: XAxisProps -> ReactElement
+yAxis :: YAxisProps -> ReactElement
 yAxis p = createElement yAxisImpl p []
